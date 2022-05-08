@@ -21,18 +21,6 @@ Written against the glTF 2.0 spec and [`KHR_lights_punctual`](https://github.com
 
 T.B.D.
 
-## Defining Shadows
-
-T.B.D.
-
-```
-"extensions": {
-    "KHR_lights_shadows": {
-        "type": "pcf"
-    }
-}
-```
-
 ## Adding shadows to Nodes
 
 ```
@@ -56,13 +44,7 @@ T.B.D.
 ]
 ```
 
-## Shadow Types
-
-| Property | Type | Description | Requires |
-|:------|:------|:------|:------|
-| `type` | `string` | Shadows type | No, default: `pcf` |
-
-## Shadow Types for Nodes
+## Shadow Node Types
 
 | Property | Type | Description | Requires |
 |:------|:------|:------|:------|
