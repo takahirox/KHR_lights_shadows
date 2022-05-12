@@ -28,33 +28,39 @@ T.B.D.
 ## Adding shadows to Nodes
 
 ```
-"nodes": [
-    {
-        "mesh": 0,
-        "extensions": {
-            "KHR_lights_shadows": {
-                "receive": true
-            }
-        }
-    },
-    {
-        "mesh": 1,
-        "extensions": {
-            "KHR_lights_shadows": {
-                "cast": true
-            }
+"nodes": [{
+    "mesh": 0,
+    "extensions": {
+        "KHR_lights_shadows": {
+            "receive": true
         }
     }
-]
+}, {
+    "mesh": 1,
+    "extensions": {
+        "KHR_lights_shadows": {
+            "cast": true
+        }
+    }
+}, {
+    "extensions" : {
+        "KHR_lights_punctual" : {
+            "light" : 0
+        },
+        "KHR_lights_shadows": {
+            "castForLight": true
+        }
+    }
+}]
 ```
 
 ## Shadow Node Types
 
 | Property | Type | Description | Requires |
 |:------|:------|:------|:------|
-| `cast` | `boolean` | Whether the node casts shadows | No, default: `false` |
-| `receive` | `boolean` | Whether the node receives shadows | No, default: `false` |
-
+| `cast` | `boolean` | Whether the mesh node casts shadows | No, default: `false` |
+| `receive` | `boolean` | Whether the mesh node receives shadows | No, default: `false` |
+| `castForLight` | `boolean` | Whether the light node casts shadows | No, default: `false` |
 
 ## Implementation Note
 
