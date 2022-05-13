@@ -32,6 +32,7 @@ T.B.D.
     "mesh": 0,
     "extensions": {
         "KHR_lights_shadows": {
+            "cast": false,
             "receive": true
         }
     }
@@ -39,7 +40,8 @@ T.B.D.
     "mesh": 1,
     "extensions": {
         "KHR_lights_shadows": {
-            "cast": true
+            "cast": true,
+            "receive": false
         }
     }
 }, {
@@ -58,9 +60,9 @@ T.B.D.
 
 | Property | Type | Description | Requires |
 |:------|:------|:------|:------|
-| `cast` | `boolean` | Whether the mesh node casts shadows | No, default: `false` |
-| `receive` | `boolean` | Whether the mesh node receives shadows | No, default: `false` |
-| `castForLight` | `boolean` | Whether the light node casts shadows | No, default: `false` |
+| `cast` | `boolean` | Whether the mesh node casts shadows | No, default: `true` |
+| `receive` | `boolean` | Whether the mesh node receives shadows | No, default: `true` |
+| `castForLight` | `boolean` | Whether the light node casts shadows | No, default: `true` |
 
 ## Implementation Note
 
