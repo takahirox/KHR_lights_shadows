@@ -25,7 +25,7 @@ This `KHR_lights_shadows` extension provides a way to let applications or engine
 
 T.B.D.
 
-## Adding shadows to Nodes
+## Cast/Receive shadows for Meshes
 
 ```
 "nodes": [{
@@ -44,25 +44,38 @@ T.B.D.
             "receive": false
         }
     }
-}, {
-    "extensions" : {
-        "KHR_lights_punctual" : {
-            "light" : 0
-        },
-        "KHR_lights_shadows": {
-            "castForLight": true
+}]
+```
+
+## Turn on/off shadows for Lights
+
+```
+"nodes": [{
+    "extensions": {
+        "KHR_lights_punctual": {
+            "light": 0,
+            "extensions": {
+                "KHR_lights_shadows": {
+                    "cast": true
+                }
+            }
         }
     }
 }]
 ```
 
-## Shadow Node Types
+## Cast/Receive Shadows for Mesh Types
 
 | Property | Type | Description | Requires |
 |:------|:------|:------|:------|
 | `cast` | `boolean` | Whether the mesh node casts shadows | No, default: `true` |
 | `receive` | `boolean` | Whether the mesh node receives shadows | No, default: `true` |
-| `castForLight` | `boolean` | Whether the light node casts shadows | No, default: `true` |
+
+## Turn on/off shadows for Light Types
+
+| Property | Type | Description | Requires |
+|:------|:------|:------|:------|
+| `cast` | `boolean` | Whether the light node casts shadows | No, default: `true` |
 
 ## Implementation Note
 
