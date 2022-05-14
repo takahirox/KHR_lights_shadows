@@ -29,10 +29,6 @@ This `KHR_lights_shadows` extension provides a way to let applications or
 engines know what nodes should cast or receive shadows and what lights should
 cast shadows.
 
-## Example screenshot
-
-T.B.D.
-
 ## Cast/Receive shadows for Meshes
 
 Whether a mesh node casts shadows and whether it receives shadows are defined by
