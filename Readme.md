@@ -15,29 +15,30 @@ Written against the glTF 2.0 spec and
 
 ## Overview
 
-This `KHR_lights_shadows` extension defines what nodes cast or receive shadows
+This `KHR_lights_shadows` extension defines what meshes cast or receive shadows
 and what lights cast shadows against
 [`KHR_lights_punctual`](https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Khronos/KHR_lights_punctual).
 
 Rendering with shadows needs a lot of calculation. It is a common technique to
-select objects which cast or receive shadows in a scene. But
+select objects which cast or receive shadows in a scene.
 `KHR_lights_punctual` extension has the capability of defining lights but doesn't
-have the capability of defining shadows. To determine what nodes in a scene
-should cast or receive shadows is the responsibility of applications or engines.
+have the capability of defining shadows.
 
 This `KHR_lights_shadows` extension provides a way to let applications or
-engines know what nodes should cast or receive shadows and what lights should
+engines know what meshes should cast or receive shadows and what lights should
 cast shadows.
 
 ## Cast/Receive shadows for Meshes
 
-Whether a mesh node casts shadows and whether it receives shadows are defined by
-adding `extensions.KHR_lights_shadows` property to a `node`, having `mesh`
-property, with `cast` and `receive` boolean properties inside it.
+Whether a mesh casts shadows and whether it receives shadows are defined by
+adding `extensions.KHR_lights_shadows` property to a `mesh` definition
+with `cast` and `receive` boolean properties inside it.
 
 ```
-"nodes": [{
-    "mesh": 0,
+"meshes": [{
+    "primitives": [
+        ...
+    ],
     "extensions": {
         "KHR_lights_shadows": {
             "cast": false,
@@ -45,11 +46,13 @@ property, with `cast` and `receive` boolean properties inside it.
         }
     }
 }, {
-    "mesh": 1,
+    "primitives": [
+        ...
+    ],
     "extensions": {
         "KHR_lights_shadows": {
-            "cast": true,
-            "receive": false
+            "cast": false,
+            "receive": true
         }
     }
 }]
@@ -57,22 +60,23 @@ property, with `cast` and `receive` boolean properties inside it.
 
 ## Turn on/off shadows for Lights
 
-Whether a light node casts shadows is defined by adding
-`extensions.KHR_lights_punctual.extensions.KHR_lights_shadows` property to a
-`node`, having `extensions.KHR_lights_punctual.light` property, with `cast`
-boolean property inside it.
+Whether a light casts shadows is defined by adding
+`extensions.KHR_lights_shadows` property to a top-level
+`extensions.KHR_lights_punctual` definition with `cast` boolean property
+inside it.
 
 ```
-"nodes": [{
-    "extensions": {
-        "KHR_lights_punctual": {
-            "light": 0,
+"extensions": {
+    "KHR_lights_punctual": {
+        "lights": [{
+            "type": ...,
+            "color": ...,
             "extensions": {
                 "KHR_lights_shadows": {
                     "cast": true
                 }
             }
-        }
+        }]
     }
 }]
 ```
@@ -81,20 +85,20 @@ boolean property inside it.
 
 | Property | Type | Description | Requires |
 |:------|:------|:------|:------|
-| `cast` | `boolean` | Whether the mesh node casts shadows | No, default: `true` |
-| `receive` | `boolean` | Whether the mesh node receives shadows | No, default: `true` |
+| `cast` | `boolean` | Whether the mesh casts shadows | No, default: `true` |
+| `receive` | `boolean` | Whether the mesh receives shadows | No, default: `true` |
 
 ## Cast shadows property for Light
 
 | Property | Type | Description | Requires |
 |:------|:------|:------|:------|
-| `cast` | `boolean` | Whether the light node casts shadows | No, default: `true` |
+| `cast` | `boolean` | Whether the light casts shadows | No, default: `true` |
 
 ## Implementation Note
 
 This extension doesn't define shadow rendering techniques (ie. Shadow Map) or
 shadow types (ie. PCF). They should be application or engine specific.
 
-`cast` and `receive` properties for Meshes don't define whether the mesh node is
+`cast` and `receive` properties for Meshes don't define whether the mesh is
 visible. Similarly `cast` property for Lights doesn't define whether the light
-node is active.
+is active.
