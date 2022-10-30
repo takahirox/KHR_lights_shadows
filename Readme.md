@@ -32,7 +32,7 @@ cast shadows.
 
 Whether a mesh casts shadows and whether it receives shadows are defined by
 adding `extensions.KHR_lights_shadows` property to a `mesh` definition
-with `cast` and `receive` boolean properties inside it.
+with `castShadows` and `receiveShadows` boolean properties inside it.
 
 ```
 "meshes": [{
@@ -41,8 +41,8 @@ with `cast` and `receive` boolean properties inside it.
     ],
     "extensions": {
         "KHR_lights_shadows": {
-            "cast": false,
-            "receive": true
+            "castShadows": false,
+            "receiveShadows": true
         }
     }
 }, {
@@ -51,8 +51,8 @@ with `cast` and `receive` boolean properties inside it.
     ],
     "extensions": {
         "KHR_lights_shadows": {
-            "cast": false,
-            "receive": true
+            "castShadows": false,
+            "receiveShadows": true
         }
     }
 }]
@@ -62,7 +62,7 @@ with `cast` and `receive` boolean properties inside it.
 
 Whether a light casts shadows is defined by adding
 `extensions.KHR_lights_shadows` property to a top-level
-`extensions.KHR_lights_punctual` definition with `cast` boolean property
+`extensions.KHR_lights_punctual` definition with `castShadows` boolean property
 inside it.
 
 ```
@@ -73,7 +73,7 @@ inside it.
             "color": ...,
             "extensions": {
                 "KHR_lights_shadows": {
-                    "cast": true
+                    "castShadows": true
                 }
             }
         }]
@@ -85,20 +85,20 @@ inside it.
 
 | Property | Type | Description | Requires |
 |:------|:------|:------|:------|
-| `cast` | `boolean` | Whether the mesh casts shadows | No, default: `true` |
-| `receive` | `boolean` | Whether the mesh receives shadows | No, default: `true` |
+| `castShadows` | `boolean` | Whether the mesh casts shadows | No, default: `true` |
+| `receiveShadows` | `boolean` | Whether the mesh receives shadows | No, default: `true` |
 
 ## Cast shadows property for Light
 
 | Property | Type | Description | Requires |
 |:------|:------|:------|:------|
-| `cast` | `boolean` | Whether the light casts shadows | No, default: `true` |
+| `castShadows` | `boolean` | Whether the light casts shadows | No, default: `true` |
 
 ## Implementation Note
 
 This extension doesn't define shadow rendering techniques (ie. Shadow Map) or
 shadow types (ie. PCF). They should be application or engine specific.
 
-`cast` and `receive` properties for Meshes don't define whether the mesh is
-visible. Similarly `cast` property for Lights doesn't define whether the light
-is active.
+`castShadows` and `receiveShadows` properties for Meshes don't define whether the
+mesh is visible. Similarly `castShadows` property for Lights doesn't define whether
+the light is active.
