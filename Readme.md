@@ -94,6 +94,12 @@ inside it.
 |:------|:------|:------|:------|
 | `castShadows` | `boolean` | Whether the light casts shadows | No, default: `true` |
 
+## glTF Schema Updates
+
+* **JSON schema**:
+  * [mesh.KHR_lights_shadows.schema.json](schema/mesh.KHR_lights_shadows.schema.json)
+  * [glTF.KHR_lights_punctual.KHR_lights_shadows.schema.json](schema/glTF.KHR_lights_punctual.KHR_lights_shadows.schema.json)
+
 ## Implementation Note
 
 This extension doesn't define shadow rendering techniques (ie. Shadow Map) or
