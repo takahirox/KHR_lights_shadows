@@ -1,10 +1,10 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "KHR_lights_shadows node.extensions.KHR_lights_punctual extension",
+    "title": "KHR_lights_shadows glTF.extensions.KHR_lights_punctual extension",
     "type": "object",
     "allOf": [ { "$ref": "glTFProperty.schema.json" } ],
     "properties": {
-        "cast": {
+        "castShadows": {
             "type": "boolean",
             "description": "Whether the light node casts shadows."
         },
